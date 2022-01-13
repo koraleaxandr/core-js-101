@@ -6,7 +6,6 @@
  *                                                                                           *
  ******************************************************************************************* */
 
-
 /** 1
  * Returns the result of concatenation of two strings.
  *
@@ -23,7 +22,6 @@ function concatenateStrings(value1, value2) {
   const string = value1 + value2;
   return string;
 }
-
 
 /** 2
  * Returns the length of given string.
@@ -73,7 +71,6 @@ function extractNameFromTemplate(value) {
   const string = value.slice(7, value.length - 1);
   return string;
 }
-
 
 /** 5
  * Returns a first char of the given string.
@@ -168,7 +165,6 @@ function unbracketTag(str) {
   return string;
 }
 
-
 /** 10
  * Converts all characters of the specified string into the upper case
  *
@@ -241,8 +237,7 @@ function getRectangleString(width, height) {
   return string;
 }
 
-
-/**
+/** 13
  * Encode specified string with ROT13 cipher
  * See details:  https://en.wikipedia.org/wiki/ROT13
  *
@@ -258,11 +253,19 @@ function getRectangleString(width, height) {
  *    => 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
  *
  */
-function encodeToRot13(/* str */) {
-  throw new Error('Not implemented');
+function encodeToRot13(str) {
+//  throw new Error('Not implemented');
+  let string = '';
+  const rightString = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ?!';
+  const codeString = 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm ?!';
+  for (let i = 0; i < str.length; i++) {
+    const index = rightString.indexOf(str[i]);
+    string += codeString[index];
+  }
+  return string;
 }
 
-/**
+/** 14
  * Returns true if the value is string; otherwise false.
  * @param {string} value
  * @return {boolean}
@@ -275,12 +278,16 @@ function encodeToRot13(/* str */) {
  *   isString('test') => true
  *   isString(new String('test')) => true
  */
-function isString(/* value */) {
-  throw new Error('Not implemented');
+function isString(value) {
+//  throw new Error('Not implemented');
+  const string = typeof value;
+  if (string === 'string') return true;
+  if (string === 'object') {
+    if (value instanceof String) return true;
+  } return false;
 }
 
-
-/**
+/** 15
  * Returns playid card id.
  *
  * Playing cards inittial deck inclides the cards in the following order:
@@ -304,10 +311,11 @@ function isString(/* value */) {
  *   'Q♠' => 50
  *   'K♠' => 51
  */
-function getCardId(/* value */) {
-  throw new Error('Not implemented');
+function getCardId(value) {
+//  throw new Error('Not implemented');
+  const cardsDeck = ('\'A♣\',\'2♣\',\'3♣\',\'4♣\',\'5♣\',\'6♣\',\'7♣\',\'8♣\',\'9♣\',\'10♣\',\'J♣\',\'Q♣\',\'K♣\',\'A♦\',\'2♦\',\'3♦\',\'4♦\',\'5♦\',\'6♦\',\'7♦\',\'8♦\',\'9♦\',\'10♦\',\'J♦\',\'Q♦\',\'K♦\',\'A♥\',\'2♥\',\'3♥\',\'4♥\',\'5♥\',\'6♥\',\'7♥\',\'8♥\',\'9♥\',\'10♥\',\'J♥\',\'Q♥\',\'K♥\',\'A♠\',\'2♠\',\'3♠\',\'4♠\',\'5♠\',\'6♠\',\'7♠\',\'8♠\',\'9♠\',\'10♠\',\'J♠\',\'Q♠\',\'K♠\'').replaceAll('\'', '').split(',');
+  return cardsDeck.indexOf(value);
 }
-
 
 module.exports = {
   concatenateStrings,
