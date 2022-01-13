@@ -7,7 +7,7 @@
  ******************************************************************************************* */
 
 
-/**
+/** 1
  * Returns the result of concatenation of two strings.
  *
  * @param {string} value1
@@ -25,7 +25,7 @@ function concatenateStrings(value1, value2) {
 }
 
 
-/**
+/** 2
  * Returns the length of given string.
  *
  * @param {string} value
@@ -41,7 +41,7 @@ function getStringLength(value) {
   return number;
 }
 
-/**
+/** 3
  * Returns the result of string template and given parameters firstName and lastName.
  * Please do not use concatenation, use template string :
  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/template_strings
@@ -59,7 +59,7 @@ function getStringFromTemplate(firstName, lastName) {
   return string;
 }
 
-/**
+/** 4
  * Extracts a name from template string 'Hello, First_Name Last_Name!'.
  *
  * @param {string} value
@@ -70,11 +70,12 @@ function getStringFromTemplate(firstName, lastName) {
  *   'Hello, Chuck Norris!' => 'Chuck Norris'
  */
 function extractNameFromTemplate(value) {
-  return value.replace('Hello, ', '');
+  const string = value.slice(7, value.length - 1);
+  return string;
 }
 
 
-/**
+/** 5
  * Returns a first char of the given string.
  *
  * @param {string} value
@@ -85,10 +86,11 @@ function extractNameFromTemplate(value) {
  *   'cat'       => 'c'
  */
 function getFirstChar(value) {
-  return value[0];
+  const string = value[0];
+  return string;
 }
 
-/**
+/** 6
  * Removes a leading and trailing whitespace characters from string.
  *
  * @param {string} value
@@ -101,13 +103,17 @@ function getFirstChar(value) {
  */
 function removeLeadingAndTrailingWhitespaces(value) {
   let string = value;
-  while (string.startsWith(' ') || string.startsWith('\t')) {
+  while (string.startsWith(' ') || string[0] === '\t') {
     string = string.slice(1);
   }
+  while (string.endsWith(' ')) {
+    string = string.slice(0, -1);
+  }
   return string;
+// throw new Error('Not implemented');
 }
 
-/**
+/** 7
  * Returns a string that repeated the specified number of times.
  *
  * @param {string} value
@@ -120,11 +126,13 @@ function removeLeadingAndTrailingWhitespaces(value) {
  */
 function repeatString(value, count) {
   let string = '';
-  for (let i = 0; i <= count; i++) string += value;
+  for (let i = 0; i < count; i++) {
+    string += value;
+  }
   return string;
 }
 
-/**
+/** 8
  * Remove the first occurrence of string inside another string
  *
  * @param {string} str
@@ -136,11 +144,12 @@ function repeatString(value, count) {
  *   'I like legends', 'end' => 'I like legs',
  *   'ABABAB','BA' => 'ABAB'
  */
-function removeFirstOccurrences(/* str, value */) {
-  throw new Error('Not implemented');
+function removeFirstOccurrences(str, value) {
+  const string = str.replace(value, '');
+  return string;
 }
 
-/**
+/** 9
  * Remove the first and last angle brackets from tag string
  *
  * @param {string} str
@@ -151,12 +160,16 @@ function removeFirstOccurrences(/* str, value */) {
  *   '<span>' => 'span'
  *   '<a>' => 'a'
  */
-function unbracketTag(/* str */) {
-  throw new Error('Not implemented');
+function unbracketTag(str) {
+// throw new Error('Not implemented');
+  let string = str;
+  if (string.startsWith('<')) string = string.slice(1);
+  if (string.endsWith('>')) string = string.slice(0, -1);
+  return string;
 }
 
 
-/**
+/** 10
  * Converts all characters of the specified string into the upper case
  *
  * @param {string} str
@@ -166,11 +179,13 @@ function unbracketTag(/* str */) {
  *   'Thunderstruck' => 'THUNDERSTRUCK'
  *  'abcdefghijklmnopqrstuvwxyz' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
  */
-function convertToUpperCase(/* str */) {
-  throw new Error('Not implemented');
+function convertToUpperCase(str) {
+//  throw new Error('Not implemented');
+  const string = str.toUpperCase();
+  return string;
 }
 
-/**
+/** 11
  * Extracts e-mails from single string with e-mails list delimeted by semicolons
  *
  * @param {string} str
@@ -185,11 +200,16 @@ function convertToUpperCase(/* str */) {
  *   ],
  *   'info@gmail.com' => ['info@gmail.com']
  */
-function extractEmails(/* str */) {
-  throw new Error('Not implemented');
+function extractEmails(str) {
+//  throw new Error('Not implemented');
+  let string = [];
+  if (str.includes(';')) {
+    string = str.split(';');
+  } else string = str.split();
+  return string;
 }
 
-/**
+/** 12
  * Returns the string representation of rectangle with specified width and height
  * using pseudograhic chars
  *
@@ -212,8 +232,13 @@ function extractEmails(/* str */) {
  *             '└──────────┘\n'
  *
  */
-function getRectangleString(/* width, height */) {
-  throw new Error('Not implemented');
+function getRectangleString(width, height) {
+//  throw new Error('Not implemented');
+  const firstString = `┌${('─').repeat(width - 2)}┐\n`;
+  const lastString = `└${('─').repeat(width - 2)}┘\n`;
+  const middleString = `│${(' ').repeat(width - 2)}│\n`;
+  const string = firstString + middleString.repeat(height - 2) + lastString;
+  return string;
 }
 
 
