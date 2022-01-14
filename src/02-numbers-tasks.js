@@ -53,10 +53,11 @@ function getCircleCircumference(radius) {
  */
 function getAverage(value1, value2) {
 //  throw new Error('Not implemented');
-return ((value1 + value2) / 2);
+  const average = (value2 / 2 + value1 / 2);
+  return average;
 }
 
-/**
+/** 4
  * Returns a distance between two points by cartesian coordinates.
  *
  * @param {number} x1
@@ -73,10 +74,11 @@ return ((value1 + value2) / 2);
  */
 function getDistanceBetweenPoints(x1, y1, x2, y2) {
 //  throw new Error('Not implemented');
-
+  const distance = Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
+  return distance;
 }
 
-/**
+/** 5
  * Returns a root of linear equation a*x + b = 0 given by coefficients a and b.
  *
  * @param {number} a
@@ -88,11 +90,13 @@ function getDistanceBetweenPoints(x1, y1, x2, y2) {
  *   x + 8 = 0       => -8
  *   5*x = 0         => 0
  */
-function getLinearEquationRoot(/* a, b */) {
-  throw new Error('Not implemented');
+function getLinearEquationRoot(a, b) {
+//  throw new Error('Not implemented');
+  const root = (-b) / a;
+  return root;
 }
 
-/**
+/** 6
  * Returns an angle (in radians) between two vectors given by xi and yi,
  * coordinates in Cartesian plane.
  * See details https://en.wikipedia.org/wiki/Euclidean_vector#Representations
@@ -110,11 +114,13 @@ function getLinearEquationRoot(/* a, b */) {
  *   (0,1) (0,1)     => 0
  *   (0,1) (1,2)     => 0
  */
-function getAngleBetweenVectors(/* x1, y1, x2, y2 */) {
-  throw new Error('Not implemented');
+function getAngleBetweenVectors(x1, y1, x2, y2) {
+//  throw new Error('Not implemented');
+  const angle = Math.abs(Math.atan2(y1, x1) - Math.atan2(y2, x2));
+  return angle;
 }
 
-/**
+/** 7
  * Returns a last digit of a integer number.
  *
  * @param {number} value
@@ -126,11 +132,13 @@ function getAngleBetweenVectors(/* x1, y1, x2, y2 */) {
  *     5     => 5
  *     0     => 0
  */
-function getLastDigit(/* value */) {
-  throw new Error('Not implemented');
+function getLastDigit(value) {
+//  throw new Error('Not implemented');
+  const string = value.toString();
+  return (Number(string[string.length - 1]));
 }
 
-/**
+/** 8
  * Returns a number by given string representation.
  *
  * @param {string} value
@@ -141,11 +149,12 @@ function getLastDigit(/* value */) {
  *     '37'     => 37
  * '-525.5'     => -525.5
  */
-function parseNumberFromString(/* value */) {
-  throw new Error('Not implemented');
+function parseNumberFromString(value) {
+//  throw new Error('Not implemented');
+  return (Number(value));
 }
 
-/**
+/** 9
  * Returns a diagonal length of the rectangular parallelepiped given by its sides a,b,c.
  *
  * @param {number} a
@@ -158,11 +167,13 @@ function parseNumberFromString(/* value */) {
  *   3,3,3   => 5.196152422706632
  *   1,2,3   => 3.741657386773941
  */
-function getParallelepipedDiagonal(/* a, b, c */) {
-  throw new Error('Not implemented');
+function getParallelepipedDiagonal(a, b, c) {
+//  throw new Error('Not implemented');
+  const distance = Math.sqrt(a ** 2 + b ** 2 + c ** 2);
+  return distance;
 }
 
-/**
+/** 10
  * Returns the number rounded to specified power of 10.
  *
  * @param {number} num
@@ -179,11 +190,14 @@ function getParallelepipedDiagonal(/* a, b, c */) {
  *   1678, 2  => 1700
  *   1678, 3  => 2000
  */
-function roundToPowerOfTen(/* num, pow */) {
-  throw new Error('Not implemented');
+function roundToPowerOfTen(num, pow) {
+//  throw new Error('Not implemented');
+  const integer = 10 ** pow;
+  const roundedNum = Math.round(num / integer) * integer;
+  return roundedNum;
 }
 
-/**
+/** 11
  * Returns true is the number is prime; otherwise false.
  * See: https://en.wikipedia.org/wiki/Primality_test
  *
@@ -200,8 +214,16 @@ function roundToPowerOfTen(/* num, pow */) {
  *   16 => false
  *   17 => true
  */
-function isPrime(/* n */) {
-  throw new Error('Not implemented');
+function isPrime(n) {
+//  throw new Error('Not implemented');
+  if (n <= 3) return n > 1;
+  if ((n % 2 === 0) || (n % 3 === 0)) return false;
+  let count = 5;
+  while ((count ** 2) <= n) {
+    if (n % count === 0 || n % (count + 2) === 0) return false;
+    count += 6;
+  }
+  return true;
 }
 
 /**
@@ -219,8 +241,13 @@ function isPrime(/* n */) {
  *   toNumber(42, 0) => 42
  *   toNumber(new Number(42), 0) => 42
  */
-function toNumber(/* value, def */) {
-  throw new Error('Not implemented');
+function toNumber(value, def) {
+//  throw new Error('Not implemented');
+  let number = Number(value);
+  if (typeof value === 'number') return value;
+  if (value instanceof Number) return value.value;
+  if (Number.isNaN(number)) number = def;
+  return number;
 }
 
 module.exports = {
